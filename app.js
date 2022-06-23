@@ -19,9 +19,10 @@
 
 const express = require("express");
 const app = express();
-const adminRoutes = require('./routes/admin')
-const shopRoutes = require('./routes/shop')
-const bodyParser = require('body-parser')
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+const bodyParser = require("body-parser");
+const path = require("path");
 
 //recommend to install with npm install --save -body-parser
 
@@ -39,13 +40,13 @@ const bodyParser = require('body-parser')
 // });
 
 //this registers a middleware, will call next and will do req.body
-app.use(bodyParser.urlencoded({extended: true}))
-app.use('/admin', adminRoutes)
-app.use(shopRoutes)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/admin", adminRoutes);
+app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).send('<h1>Page not found</h1>')
-})
+  res.status(404).sendFile(path.join(__dirname, "views", "page-not-found"));
+});
 
 // const server = http.createServer(app); removed due to express
 // server.listen(3000);removed due to express
