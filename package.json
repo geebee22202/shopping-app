@@ -1,0 +1,18 @@
+{
+  "name": "shopping-app",
+  "version": "1.0.0",
+  "description": "Complete Node.js guide",
+  "main": "first-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node app.js"
+  },
+  "author": "georgie adolphe",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
