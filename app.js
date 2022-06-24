@@ -19,7 +19,15 @@
 
 const express = require("express");
 const app = express();
-const adminRoutes = require("./routes/admin");
+
+//view engine allows us to tell express to use a specific engine when 
+//for any dynamic template we're trying to render
+//views tells express where to find these enngines
+app.set('view engine', 'pug')
+//already happens automatically since views is the default, but you'd add below line if it wasn't
+app.set('views', 'views')
+
+const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -45,7 +53,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //allows us to serve file statically, makes css read-only
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/admin", adminRoutes);
+app.use("/admin", adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
