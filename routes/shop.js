@@ -11,8 +11,11 @@ router.get("/", (req, res, next) => {
   //dirname is a global variable that holds aboslulte path to project folder
   //this way will work on both linux and windows systems
   //../ means go up one level
+  //don't need line below since we're using pug engine
   // res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
-  res.render('shop');
+  //passing products to render dynamic content
+  const products = adminData.products
+  res.render('shop', {prods: products, docTitle: 'Shop'});
 });
 
 module.exports = router;
