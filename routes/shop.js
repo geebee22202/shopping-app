@@ -15,7 +15,8 @@ router.get("/", (req, res, next) => {
   // res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
   //passing products to render dynamic content
   const products = adminData.products
-  res.render('shop', {prods: products, pageTitle: 'Shop', path: '/'});
+  //can't run logic in hbs template, just output single variables
+  res.render('shop', {prods: products, pageTitle: 'Shop', path: '/', hasProducts: products.length > 0});
 });
 
 module.exports = router;

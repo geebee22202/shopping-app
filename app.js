@@ -17,22 +17,24 @@
 // //receives a request and a response
 // //event driven architecture
 
+const adminData = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+//recommend to install with npm install --save -body-parser
+const bodyParser = require("body-parser");
+const path = require("path");
+// have to manually tell express that this is express handlebars exists
+const expressHbs = require("express-handlebars");
+
 const express = require("express");
 const app = express();
 
-//view engine allows us to tell express to use a specific engine when 
+app.engine("hbs", expressHbs());
+//view engine allows us to tell express to use a specific engine when
 //for any dynamic template we're trying to render
 //views tells express where to find these enngines
-app.set('view engine', 'pug')
+app.set("view engine", "hbs");
 //already happens automatically since views is the default, but you'd add below line if it wasn't
-app.set('views', 'views')
-
-const adminData = require("./routes/admin");
-const shopRoutes = require("./routes/shop");
-const bodyParser = require("body-parser");
-const path = require("path");
-
-//recommend to install with npm install --save -body-parser
+app.set("views", "views");
 
 //allows us to create middleware
 //next is a funciton that will be passed through this function - this allows request to travel on to next middleware in line
@@ -57,7 +59,8 @@ app.use("/admin", adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).render('404', {pageTitle: "Page not found"})
+  //the way you pass in data doesn't change with diff templates, will still be pageTitle: xyz
+  res.status(404).render("404", { pageTitle: "Page not found" });
 });
 
 // const server = http.createServer(app); removed due to express
