@@ -10,12 +10,20 @@
   "author": "georgie adolphe",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.18"
   },
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "pug": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geebee22202/shopping-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geebee22202/shopping-app/issues"
+  },
+  "homepage": "https://github.com/geebee22202/shopping-app#readme"
 }
