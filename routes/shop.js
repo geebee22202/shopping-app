@@ -14,9 +14,16 @@ router.get("/", (req, res, next) => {
   //don't need line below since we're using pug engine
   // res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
   //passing products to render dynamic content
-  const products = adminData.products
+  const products = adminData.products;
   //can't run logic in hbs template, just output single variables
-  res.render('shop', {prods: products, pageTitle: 'Shop', path: '/', hasProducts: products.length > 0});
+  res.render("shop", {
+    prods: products,
+    pageTitle: "Shop",
+    path: "/",
+    hasProducts: products.length > 0,
+    activeShop: true,
+    productCSS: true,
+  });
 });
 
 module.exports = router;

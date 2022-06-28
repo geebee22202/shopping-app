@@ -28,7 +28,7 @@ const expressHbs = require("express-handlebars");
 const express = require("express");
 const app = express();
 
-app.engine("hbs", expressHbs());
+app.engine("hbs", expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'}));
 //view engine allows us to tell express to use a specific engine when
 //for any dynamic template we're trying to render
 //views tells express where to find these enngines
