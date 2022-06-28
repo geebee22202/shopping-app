@@ -22,17 +22,15 @@ const shopRoutes = require("./routes/shop");
 //recommend to install with npm install --save -body-parser
 const bodyParser = require("body-parser");
 const path = require("path");
-// have to manually tell express that this is express handlebars exists
-const expressHbs = require("express-handlebars");
+
 
 const express = require("express");
 const app = express();
 
-app.engine("hbs", expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'}));
 //view engine allows us to tell express to use a specific engine when
 //for any dynamic template we're trying to render
 //views tells express where to find these enngines
-app.set("view engine", "hbs");
+app.set("view engine", "ejs");
 //already happens automatically since views is the default, but you'd add below line if it wasn't
 app.set("views", "views");
 

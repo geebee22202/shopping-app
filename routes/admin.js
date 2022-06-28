@@ -9,7 +9,13 @@ const products = [];
 
 //admin/add-product => GET
 router.get("/add-product", (req, res, next) => {
-  res.render("add-product", { pageTitle: "Add Product", path: '/admin/add-product', activeAddProduct: true, formsCSS: true, productCSS: true });
+  res.render("add-product", {
+    pageTitle: "Add Product",
+    path: "/admin/add-product",
+    activeAddProduct: true,
+    formsCSS: true,
+    productCSS: true,
+  });
   // res.send(
   //   '<form action="/admin/add-product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>'
   // ); //default response header is html
