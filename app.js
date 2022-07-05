@@ -17,12 +17,12 @@
 // //receives a request and a response
 // //event driven architecture
 
-const adminData = require("./routes/admin");
+const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 //recommend to install with npm install --save -body-parser
 const bodyParser = require("body-parser");
 const path = require("path");
-
+const errorController = require('./controllers/error')
 
 const express = require("express");
 const app = express();
@@ -53,13 +53,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //allows us to serve file statically, makes css read-only
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/admin", adminData.routes);
+app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res, next) => {
-  //the way you pass in data doesn't change with diff templates, will still be pageTitle: xyz
-  res.status(404).render("404", { pageTitle: "Page not found" });
-});
+app.use(errorController.get404);
 
 // const server = http.createServer(app); removed due to express
 // server.listen(3000);removed due to express
